@@ -27,7 +27,10 @@ namespace Razlomci_3._1
         }
         private void button1_Click(object sender, EventArgs e)
         {
+            listBox1.Items.Clear();
             string s=textBox1.Text;
+            if (s[s.Length - 1] == '+' || s[s.Length - 1] == '-')
+                s.Remove(s.Length - 1, 1);
             int i = 0;
             Razlomci rez= uBroj(ref i, s);
             while(i<s.Length)
