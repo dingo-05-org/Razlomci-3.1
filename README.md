@@ -6,3 +6,6 @@ Domaci matematicke gimnazije, iz stringa ucitavati brojeve i sabirati ih i oduzi
 Visuaelni izgled promenjen
 
 ![image](https://user-images.githubusercontent.com/112895914/201438789-a02c0d17-e2fd-4ee7-a7cc-17f7d598c617.png)
+
+#v 3.1.3[FINAL]
+Ispravljeni su svi bagovi koji bi kresovali aplikaciju.
