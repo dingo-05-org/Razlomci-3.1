@@ -25,12 +25,37 @@ namespace Razlomci_3._1
             listBox1.Items.Add(rez.ispis());
             return rez;
         }
+        private bool Provera(string s)
+        {
+            int i = 0;
+            while (i < s.Length)
+                if (!((s[i] >= '0' && s[i] <= '9') || s[i] == '/'||s[i] != '+' || s[i] != '-'))
+                {
+                    return true;
+                }
+                else i++;
+            if (s[i - 1] == '+' || s[i-1]=='-')
+                return true;
+            return false;
+            
+        }
         private void button1_Click(object sender, EventArgs e)
         {
-            listBox1.Items.Clear();
             string s=textBox1.Text;
-            if (s[s.Length - 1] == '+' || s[s.Length - 1] == '-')
-                s.Remove(s.Length - 1, 1);
+            if (s.Length != 0)
+            {
+                if (Provera(s))
+                {
+                    MessageBox.Show($"Uneli ste neodgovarajuci oblik, molim vas probajte ponovo, dozvoljeni su sledece:{Environment.NewLine}0123456789+-/{Environment.NewLine}Isto tako ne smes da zavrsis program sa + ili -. ");
+                    return;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Niste uneli nista");
+                return;
+            }
+            listBox1.Items.Clear();
             int i = 0;
             Razlomci rez= uBroj(ref i, s);
             while(i<s.Length)
