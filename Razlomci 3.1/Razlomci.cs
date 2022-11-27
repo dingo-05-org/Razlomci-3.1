@@ -22,13 +22,13 @@ namespace Razlomci_3._1
             br = a;
             im = 1;
         }
-        public Razlomci(int a, int b) 
+        public Razlomci(int a, int b)
         {
-            br = a; 
-            im = b; 
-            if (im == 0) im = 1; 
-            else if (im < 0) { br = -br; im = -im; } 
-            skrati(); 
+            br = a;
+            im = b;
+            if (im == 0) im = 1;
+            else if (im < 0) { br = -br; im = -im; }
+            skrati();
         }
         public Razlomci(string s)
         {
@@ -101,5 +101,71 @@ namespace Razlomci_3._1
             return this.pomnozi(B.reciprocni());
         }
         #endregion
-    } 
+        #region Operatori
+        public static Razlomci operator +(Razlomci a, Razlomci b)
+        {
+            return new Razlomci(a.br * b.im + b.br * a.im, a.im * b.im);
+        }
+        public static Razlomci operator +(Razlomci a, int b)
+        {
+            return new Razlomci(a.br + b * a.im, a.im);
+        }
+        public static Razlomci operator +(int b, Razlomci a)
+        {
+            return new Razlomci(a.br + b * a.im, a.im);
+        }
+        public static Razlomci operator -(Razlomci a, int b)
+        {
+            return new Razlomci(a.br - b * a.im, a.im);
+        }
+        public static Razlomci operator -(int b, Razlomci a)
+        {
+            return new Razlomci(a.br - b * a.im, a.im);
+        }
+        public static Razlomci operator -(Razlomci a, Razlomci b)
+        {
+            return new Razlomci(a.br * b.im - b.br * a.im, a.im * b.im);
+        }
+        public static Razlomci operator ~(Razlomci a)
+        {
+            return new Razlomci(a.im, a.br);
+        }
+        public static Razlomci operator * (Razlomci a, Razlomci b)
+        {
+            return new Razlomci(a.br*b.br, a.im*b.im);
+        }
+        public static Razlomci operator * (Razlomci a, int b)
+        {
+            return new Razlomci(a.br * b, a.im);
+        }
+        public static Razlomci operator *(int a, Razlomci b)
+        {
+            return new Razlomci(b.br * a, b.im);
+        }
+        public static Razlomci operator /(Razlomci a, Razlomci b)
+        {
+            return a * ~b;
+        }
+        public static Razlomci operator /(int a, Razlomci b)
+        {
+            return new Razlomci(b.br, b.im * a);
+        }
+        public static Razlomci operator /(Razlomci a, int b)
+        {
+            return new Razlomci(a.br, a.im * b);
+        }
+        public static implicit operator Razlomci(int i)
+        {
+            return new Razlomci(i, 1);
+        }
+        public static explicit operator double(Razlomci r)
+        {
+            return (double)r.br / r.im;
+        }
+        public static bool operator >(Razlomci a,Razlomci b)
+        { return a.br*b.im > b.br*a.im;}
+        public static bool operator <(Razlomci a, Razlomci b)
+        { return a.br * b.im < b.br * a.im; }
+        #endregion
+    }
 }
